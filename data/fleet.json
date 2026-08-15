@@ -1,0 +1,410 @@
+[
+ {
+  "id": "affinity",
+  "name": "Affinity",
+  "domain": "affinity.neorgon.com",
+  "url": "https://affinity.neorgon.com/",
+  "group": "growth",
+  "desc": "Hunter x Hunter Nen efficiency model for tech careers (live but hidden"
+ },
+ {
+  "id": "agentlore",
+  "name": "Agent Lore",
+  "domain": "agentlore.neorgon.com",
+  "url": "https://agentlore.neorgon.com/",
+  "group": "productivity",
+  "desc": "AI agent tutorial hub for Claude and Cursor workflows"
+ },
+ {
+  "id": "autopilot",
+  "name": "Autopilot",
+  "domain": "autopilot.neorgon.com",
+  "url": "https://autopilot.neorgon.com/",
+  "group": "productivity",
+  "desc": "Visual idle-schedule builder, generates macOS shell commands"
+ },
+ {
+  "id": "awesomes",
+  "name": "Awesome Sites",
+  "domain": "awesomesites.neorgon.com",
+  "url": "https://awesomesites.neorgon.com/",
+  "group": "lifehacks",
+  "desc": "Curated external sites with labeled lists; JSON API feeds featured car"
+ },
+ {
+  "id": "battlecard",
+  "name": "BattleCard",
+  "domain": "battlecard.neorgon.com",
+  "url": "https://battlecard.neorgon.com/",
+  "group": "productivity",
+  "desc": "Sales battle card builder with game icons, resizable sections, and PNG"
+ },
+ {
+  "id": "buyhacks",
+  "name": "BuyHacks",
+  "domain": "buyhacks.neorgon.com",
+  "url": "https://buyhacks.neorgon.com/",
+  "group": "lifehacks",
+  "desc": "Curated product showcase with community votes and life-hack tips"
+ },
+ {
+  "id": "cardforge",
+  "name": "CardForge",
+  "domain": "cardforge.neorgon.com",
+  "url": "https://cardforge.neorgon.com/",
+  "group": "devops",
+  "desc": "Drag-and-drop card designer for the Rush Q game with live preview and "
+ },
+ {
+  "id": "character-sheet",
+  "name": "Character Sheet",
+  "domain": "charactersheet.neorgon.com",
+  "url": "https://charactersheet.neorgon.com/",
+  "group": "social",
+  "desc": "RPG-style personality interview, card export, and team party board"
+ },
+ {
+  "id": "client-says",
+  "name": "Client Says",
+  "domain": "clientsays.neorgon.com",
+  "url": "https://clientsays.neorgon.com/",
+  "group": "fun",
+  "desc": "Timezone converter and jargon translator"
+ },
+ {
+  "id": "decision-wheel",
+  "name": "Decision Wheel",
+  "domain": "decisionwheel.neorgon.com",
+  "url": "https://decisionwheel.neorgon.com/",
+  "group": "fun",
+  "desc": "Customizable decision wheel"
+ },
+ {
+  "id": "doorman",
+  "name": "doorman-site",
+  "domain": "doorman.neorgon.com",
+  "url": "https://doorman.neorgon.com/",
+  "group": "uncategorised",
+  "desc": ""
+ },
+ {
+  "id": "emoji",
+  "name": "Emoji Archive",
+  "domain": "emojis.neorgon.com",
+  "url": "https://emojis.neorgon.com/",
+  "group": "fun",
+  "desc": "Searchable Slack emoji archive"
+ },
+ {
+  "id": "failsafe",
+  "name": "Failsafe",
+  "domain": "failsafe.neorgon.com",
+  "url": "https://failsafe.neorgon.com/",
+  "group": "lifehacks",
+  "desc": "Build personal emergency protocols with encrypted export and shareable"
+ },
+ {
+  "id": "fitprofile",
+  "name": "FitProfile",
+  "domain": "fitprofile.neorgon.com",
+  "url": "https://fitprofile.neorgon.com/",
+  "group": "lifehacks",
+  "desc": "Track measurements, brand sizes, and style preferences with shareable "
+ },
+ {
+  "id": "gamebin",
+  "name": "GameBin",
+  "domain": "gamebin.neorgon.com",
+  "url": "https://gamebin.neorgon.com/",
+  "group": "fun",
+  "desc": "Curate and share visual game lists with Steam integration, custom prof"
+ },
+ {
+  "id": "glassbox",
+  "name": "Glass Box",
+  "domain": "glassbox.neorgon.com",
+  "url": "https://glassbox.neorgon.com/",
+  "group": "productivity",
+  "desc": "Interactive study labs for the Claude Certified Architect exam: a leve"
+ },
+ {
+  "id": "guild-hall",
+  "name": "Guild Hall",
+  "domain": "guildhall.neorgon.com",
+  "url": "https://guildhall.neorgon.com/",
+  "group": "ui-lab",
+  "desc": "Monster Hunter-inspired quest board with ranks, badges, and hunter car"
+ },
+ {
+  "id": "headpain",
+  "name": "HeadPain",
+  "domain": "headpain.neorgon.com",
+  "url": "https://headpain.neorgon.com/",
+  "group": "lifehacks",
+  "desc": "3D head pain mapper with intensity, depth, and quality logging, local "
+ },
+ {
+  "id": "hiring-pack",
+  "name": "Hiring Pack",
+  "domain": "hiringpack.neorgon.com",
+  "url": "https://hiringpack.neorgon.com/",
+  "group": "social",
+  "desc": "Interview kits and hiring resources for engineering managers"
+ },
+ {
+  "id": "hwinfo-viewer",
+  "name": "HWiNFO Viewer",
+  "domain": "hwinfo.neorgon.com",
+  "url": "https://hwinfo.neorgon.com/",
+  "group": "data",
+  "desc": "Visualize HWiNFO CSV logs with crash detection, performance-limit flag"
+ },
+ {
+  "id": "incident-runbook",
+  "name": "Incident Runbook",
+  "domain": "runbook.neorgon.com",
+  "url": "https://runbook.neorgon.com/",
+  "group": "devops",
+  "desc": "Quick-reference incident response runbooks for on-call engineers"
+ },
+ {
+  "id": "infra-drills",
+  "name": "Infra Drills",
+  "domain": "infradrills.neorgon.com",
+  "url": "https://infradrills.neorgon.com/",
+  "group": "devops",
+  "desc": "Local AWS, K8s, GitLab CI break-fix challenges"
+ },
+ {
+  "id": "json-studio",
+  "name": "JSON Studio",
+  "domain": "jsonstudio.neorgon.com",
+  "url": "https://jsonstudio.neorgon.com/",
+  "group": "data",
+  "desc": "Visual drag-and-drop JSON block editor"
+ },
+ {
+  "id": "loadout",
+  "name": "loadout-site",
+  "domain": "loadout.neorgon.com",
+  "url": "https://loadout.neorgon.com/",
+  "group": "uncategorised",
+  "desc": ""
+ },
+ {
+  "id": "lockdown",
+  "name": "Lockdown",
+  "domain": "lockdown.neorgon.com",
+  "url": "https://lockdown.neorgon.com/",
+  "group": "devops",
+  "desc": "Site security scanner with endpoint discovery and hardening tips"
+ },
+ {
+  "id": "memes",
+  "name": "Meme Vault",
+  "domain": "memes.neorgon.com",
+  "url": "https://memes.neorgon.com/",
+  "group": "fun",
+  "desc": "Browse, vote, and upload memes"
+ },
+ {
+  "id": "mettle",
+  "name": "mettle-site",
+  "domain": "mettle.neorgon.com",
+  "url": "https://mettle.neorgon.com/",
+  "group": "uncategorised",
+  "desc": ""
+ },
+ {
+  "id": "minimap",
+  "name": "Minimap",
+  "domain": "minimap.neorgon.com",
+  "url": "https://minimap.neorgon.com/",
+  "group": "fun",
+  "desc": "Parody ARPG played entirely on the minimap: procedural biome dungeons,"
+ },
+ {
+  "id": "neorgon",
+  "name": "Neorgon",
+  "domain": "neorgon.com",
+  "url": "https://neorgon.com/",
+  "group": "hub",
+  "desc": "Hub landing page, links all tools"
+ },
+ {
+  "id": "neorgon-cdn",
+  "name": "Neorgon CDN",
+  "domain": "cdn.neorgon.org",
+  "url": "https://cdn.neorgon.org/",
+  "group": "infra",
+  "desc": "Shared asset CDN and Cloudflare Worker proxy"
+ },
+ {
+  "id": "og-studio",
+  "name": "OG Studio",
+  "domain": "ogstudio.neorgon.com",
+  "url": "https://ogstudio.neorgon.com/",
+  "group": "productivity",
+  "desc": "Generate 1200x630 social preview images for all Neorgon tools"
+ },
+ {
+  "id": "parla",
+  "name": "Parla",
+  "domain": "parla.neorgon.com",
+  "url": "https://parla.neorgon.com/",
+  "group": "social",
+  "desc": "Latin American slang translator with visual word mapping"
+ },
+ {
+  "id": "pathfinder",
+  "name": "Pathfinder",
+  "domain": "pathfinder.neorgon.com",
+  "url": "https://pathfinder.neorgon.com/",
+  "group": "planning",
+  "desc": "Visual strategy canvas with gap detection and AI prompt export"
+ },
+ {
+  "id": "playbook",
+  "name": "Playbook",
+  "domain": "playbook.neorgon.com",
+  "url": "https://playbook.neorgon.com/",
+  "group": "social",
+  "desc": "Career advice for people in tech, bilingual ES/EN with series navigati"
+ },
+ {
+  "id": "slides",
+  "name": "Presentation Sage",
+  "domain": "slides.neorgon.com",
+  "url": "https://slides.neorgon.com/",
+  "group": "productivity",
+  "desc": "YAML-driven slide editor with PPTX/HTML/Marp export"
+ },
+ {
+  "id": "primer",
+  "name": "primer-site",
+  "domain": "primer.neorgon.com",
+  "url": "https://primer.neorgon.com/",
+  "group": "uncategorised",
+  "desc": ""
+ },
+ {
+  "id": "proctor",
+  "name": "Proctor",
+  "domain": "proctor.neorgon.com",
+  "url": "https://proctor.neorgon.com/",
+  "group": "growth",
+  "desc": "Exam runner that loads tests from JSON or YAML: study mode with correc"
+ },
+ {
+  "id": "prompt-forge",
+  "name": "Prompt Forge",
+  "domain": "promptforge.neorgon.com",
+  "url": "https://promptforge.neorgon.com/",
+  "group": "productivity",
+  "desc": "Prompt engineering workspace and reusable prompt library"
+ },
+ {
+  "id": "questline",
+  "name": "Questline",
+  "domain": "questline.neorgon.com",
+  "url": "https://questline.neorgon.com/",
+  "group": "ui-lab",
+  "desc": "Operating model as a NieR-style game console with command-palette sear"
+ },
+ {
+  "id": "radar",
+  "name": "radar-site",
+  "domain": "radar.neorgon.com",
+  "url": "https://radar.neorgon.com/",
+  "group": "uncategorised",
+  "desc": ""
+ },
+ {
+  "id": "references-api",
+  "name": "Reference Matrix",
+  "domain": "references.neorgon.com",
+  "url": "https://references.neorgon.com/",
+  "group": "data",
+  "desc": "Enerbot Slack bot references, live regex, JSON API"
+ },
+ {
+  "id": "resume-forge",
+  "name": "Resume Forge",
+  "domain": "resume.neorgon.com",
+  "url": "https://resume.neorgon.com/",
+  "group": "productivity",
+  "desc": "Gaming-inspired resume builder with PSN/Steam stats and PDF export"
+ },
+ {
+  "id": "safeguard",
+  "name": "SafeGuard",
+  "domain": "safeguard.neorgon.com",
+  "url": "https://safeguard.neorgon.com/",
+  "group": "devops",
+  "desc": "Security hardening guides for devices and accounts, bilingual EN/ES"
+ },
+ {
+  "id": "skill-map",
+  "name": "Skill Map",
+  "domain": "skillmap.neorgon.com",
+  "url": "https://skillmap.neorgon.com/",
+  "group": "planning",
+  "desc": "Visual skill tree and learning path builder"
+ },
+ {
+  "id": "snippets",
+  "name": "Snippets",
+  "domain": "snippets.neorgon.com",
+  "url": "https://snippets.neorgon.com/",
+  "group": "devops",
+  "desc": "Curated shell commands and code snippets, search and copy"
+ },
+ {
+  "id": "stack-rank",
+  "name": "Stack Rank",
+  "domain": "stackrank.neorgon.com",
+  "url": "https://stackrank.neorgon.com/",
+  "group": "productivity",
+  "desc": "Drag-and-drop shared priority lists with URL sharing and collaborative"
+ },
+ {
+  "id": "stash",
+  "name": "Stash",
+  "domain": "stash.neorgon.com",
+  "url": "https://stash.neorgon.com/",
+  "group": "productivity",
+  "desc": "Design assets to use later: icons, UI kits, pixel art, music and readi"
+ },
+ {
+  "id": "team-play",
+  "name": "Team Play",
+  "domain": "teamplay.neorgon.com",
+  "url": "https://teamplay.neorgon.com/",
+  "group": "fun",
+  "desc": "Curated games and activities for team building and retros"
+ },
+ {
+  "id": "tubestack",
+  "name": "TubeStack",
+  "domain": "tubestack.neorgon.com",
+  "url": "https://tubestack.neorgon.com/",
+  "group": "social",
+  "desc": "YouTube channel discovery for engineers \u2014 curate stacks, browse peers,"
+ },
+ {
+  "id": "ui-anatomy",
+  "name": "UI Anatomy",
+  "domain": "uianatomy.neorgon.com",
+  "url": "https://uianatomy.neorgon.com/",
+  "group": "ui-lab",
+  "desc": "Interactive wireframe simulator for learning UI component names"
+ },
+ {
+  "id": "interviews",
+  "name": "Vibe Check",
+  "domain": "interviews.neorgon.com",
+  "url": "https://interviews.neorgon.com/",
+  "group": "social",
+  "desc": "Behavioral interview scorecard with Core Five archetype matching"
+ }
+]

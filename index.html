@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeoKeys | Shortcut Registry</title>
+  <meta name="description" content="Register keyboard shortcuts in one call and get a self-updating help overlay, collision warnings, and a chrome toggle that reclaims the page's full height">
+  <meta property="og:title" content="NeoKeys: Shortcut Registry">
+  <meta property="og:description" content="Declare shortcuts as data. The help sheet writes itself and collisions get loud.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://neokeys.neorgon.com/">
+  <meta property="og:site_name" content="Neorgon">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NeoKeys: Shortcut Registry">
+  <meta name="twitter:description" content="Declare shortcuts as data. The help sheet writes itself and collisions get loud.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://neokeys.neorgon.com/">
+  <meta property="og:locale" content="en_US">
+  <meta name="theme-color" content="#040714">
+  <meta property="og:image" content="https://neokeys.neorgon.com/og-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://neokeys.neorgon.com/og-preview.jpg">
+
+  <!-- NeoKeys opt-ins. Both are per-site on purpose: H only where the header is
+       chrome rather than navigation, M only where the joke lands. -->
+  <meta name="neo-chrome-toggle" content="on">
+  <meta name="neo-keys-store" content="on">
+  <meta name="neo-repo" content="energon-a-secas/neokeys-site">
+  <meta name="neo-version" content="1.0.0">
+  <meta name="neo-updated" content="2026-08-14">
+
+  <link rel="icon" type="image/x-icon" href="https://cdn.neorgon.org/v1.0.0/favicon.ico" />
+  <!-- Fleet design tokens — canonical, do not redeclare locally (PROJECTS.md section 5) -->
+  <link rel="stylesheet" href="https://cdn.neorgon.org/v1.0.0/styles/base.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="js/neokeys/keys.css">
+  <script>(function(){var m=location.search.match(/[?&]theme=([\w-]+)/)||document.cookie.match(/(?:^|;\s*)neo_theme=([\w-]+)/);if(m&&m[1]!=='default')document.documentElement.dataset.theme=decodeURIComponent(m[1]);})();</script>
+  <link rel="stylesheet" href="css/neorgon-header.css">
+  <link rel="stylesheet" href="css/neorgon-themes.css">
+  <link rel="stylesheet" href="https://cdn.neorgon.org/v1.0.0/header/season.css">
+  <script defer src="js/neorgon-header.js"></script>
+  <link rel="stylesheet" href="css/neorgon-footer.css">
+  <script defer src="js/neorgon-footer.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "NeoKeys",
+    "description": "Keyboard shortcut registry with a self-updating help overlay, collision detection, and a chrome toggle",
+    "url": "https://neokeys.neorgon.com/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "author": { "@type": "Organization", "name": "Neorgon", "url": "https://neorgon.com/" }
+  }
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="header-bar" data-header-mode="content">
+    <div class="header-logo">
+      <a href="https://neorgon.com/" target="_blank" rel="noopener noreferrer">
+        <img src="https://cdn.neorgon.org/v1.0.0/energon-classic-logo.png" class="header-logo-img" alt="Logo">
+      </a>
+      <a href="./" class="header-title-link">
+        <h1>NeoKeys</h1>
+        <div class="header-subtitle">Shortcuts you can list, remap, and audit</div>
+      </a>
+    </div>
+
+    <div class="header-right">
+      <div class="header-actions">
+        <button class="btn btn--ghost btn--sm" id="openSheet" data-keep-mobile>Shortcuts</button>
+        <button class="btn btn--ghost btn--sm" id="openFleet">Jump to a site</button>
+      </div>
+      <a class="header-home" href="https://neorgon.com/" title="neorgon.com" aria-label="Neorgon home">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container stack">
+
+      <!-- ── Hero ─────────────────────────────────────────────── -->
+      <section class="section nk-hero" aria-labelledby="hero-title">
+        <h2 class="nk-hero__title" id="hero-title">Press <kbd class="nk-key nk-key--xl">?</kbd> right now.</h2>
+        <p class="nk-hero__lead">
+          That sheet built itself from the registry. Nothing on this page maintains a list
+          of shortcuts, which is why the list cannot go stale.
+        </p>
+        <div class="nk-hero__keys" id="heroKeys"></div>
+        <p class="nk-hero__note">
+          Every key below is live on this page. So is the guard that stops them firing while you type.
+        </p>
+      </section>
+
+      <!-- ── Live monitor ─────────────────────────────────────── -->
+      <section class="section" aria-labelledby="monitor-title">
+        <div class="section__titles">
+          <h2 class="section__title" id="monitor-title">What the registry decided</h2>
+          <p class="section__lead">
+            Press any key. NeoKeys reports the verdict it reached and the reason, which is the
+            same value the dispatcher acts on. Then click into the field and type: the verdict
+            changes to <code>typing</code> and nothing fires.
+          </p>
+        </div>
+
+        <div class="nk-monitor">
+          <div class="nk-monitor__stage">
+            <div class="nk-monitor__key" id="monKey" aria-hidden="true">·</div>
+            <div class="nk-monitor__verdict">
+              <span class="nk-monitor__badge" id="monBadge" data-verdict="idle">waiting</span>
+              <p class="nk-monitor__why" id="monWhy" role="status">Press a key anywhere on the page.</p>
+            </div>
+          </div>
+          <label class="nk-monitor__field">
+            <span>Type in here to watch the guard work</span>
+            <input type="text" id="guardProbe" placeholder="h, g and ? do nothing while this has focus" autocomplete="off">
+          </label>
+          <div class="nk-monitor__field">
+            <span>So does a contenteditable, the case most guards forget</span>
+            <div class="nk-monitor__editable" id="guardProbeCE" contenteditable="true" role="textbox" aria-label="Editable region" spellcheck="false">Click here and press H.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Mechanics ────────────────────────────────────────── -->
+      <section class="section" aria-labelledby="mech-title">
+        <div class="section__titles">
+          <h2 class="section__title" id="mech-title">Four mechanics</h2>
+          <p class="section__lead">Three the kit owns, one it only checks. Each is live here.</p>
+        </div>
+        <div class="nk-grid" id="mechGrid"></div>
+      </section>
+
+      <!-- ── Collision playground ─────────────────────────────── -->
+      <section class="section" aria-labelledby="collide-title">
+        <div class="section__titles">
+          <h2 class="section__title" id="collide-title">Try to break it</h2>
+          <p class="section__lead">
+            Register a shortcut below. Reserved keys are refused, keys already taken are
+            refused, and fleet conventions are allowed with a warning, because only a person
+            can judge whether your <kbd class="nk-key">E</kbd> really means export.
+          </p>
+        </div>
+        <div class="card nk-lab">
+          <form class="nk-lab__form" id="collideForm">
+            <label class="nk-lab__field">
+              <span>Key</span>
+              <input type="text" id="collideKey" maxlength="1" placeholder="?" autocomplete="off" aria-label="Key to register">
+            </label>
+            <label class="nk-lab__field nk-lab__field--wide">
+              <span>Label</span>
+              <input type="text" id="collideLabel" maxlength="32" placeholder="Do the thing" autocomplete="off" aria-label="Shortcut label">
+            </label>
+            <button type="submit" class="btn btn--primary btn--sm">Register</button>
+          </form>
+          <ul class="nk-lab__log" id="collideLog" aria-live="polite"></ul>
+        </div>
+      </section>
+
+      <!-- ── Install / tutorial ───────────────────────────────── -->
+      <section class="section" aria-labelledby="install-title">
+        <div class="section__titles">
+          <h2 class="section__title" id="install-title">Add it to a site</h2>
+          <p class="section__lead">Three steps. The third is the only one with any thinking in it.</p>
+        </div>
+        <ol class="nk-steps" id="installSteps"></ol>
+      </section>
+
+      <!-- ── Key map ──────────────────────────────────────────── -->
+      <section class="section" aria-labelledby="map-title">
+        <div class="section__titles">
+          <h2 class="section__title" id="map-title">The fleet key map</h2>
+          <p class="section__lead">
+            Surveyed across all 65 projects before any key was reserved. The counts below are
+            what the code actually does today, not what anyone remembered.
+          </p>
+        </div>
+        <div class="nk-map" id="keyMap"></div>
+      </section>
+
+      <!-- ── Safety ───────────────────────────────────────────── -->
+      <section class="section" aria-labelledby="safety-title">
+        <div class="section__titles">
+          <h2 class="section__title" id="safety-title">Why a bare key is safe on a page full of text</h2>
+          <p class="section__lead">
+            Five layers, ordered by how early they act. The first three are the kit's job, the
+            fourth is the visitor's, and the fifth runs before a site is ever switched on.
+          </p>
+        </div>
+        <div class="nk-layers" id="safetyLayers"></div>
+      </section>
+
+      <!-- ── Accessibility ────────────────────────────────────── -->
+      <section class="section" aria-labelledby="a11y-title">
+        <div class="section__titles">
+          <h2 class="section__title" id="a11y-title">Single-key shortcuts and WCAG 2.1.4</h2>
+          <p class="section__lead">
+            Success Criterion 2.1.4 is Level A. A single-character shortcut has to be
+            switchable off, remappable, or active only on focus. NeoKeys does all three, and
+            the controls live in the same sheet as the list.
+          </p>
+        </div>
+        <div class="nk-grid nk-grid--tight" id="a11yGrid"></div>
+        <p class="nk-aside">
+          One thing the compliance does not solve: screen readers in browse mode claim
+          <kbd class="nk-key">H</kbd> for "next heading", so a reader using one never reaches
+          the toggle. Any site that turns chrome hiding on should keep a visible control too.
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <button type="button" class="nk-tip" id="tipStrip" aria-label="Show another tip">
+    <span class="nk-tip__eyebrow">Tip</span>
+  </button>
+
+  <footer class="neo-footer" data-footer-mode="minimal">
+    Runs entirely in your browser. Shortcut preferences stay in this device's local storage.
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

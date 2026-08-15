@@ -1,0 +1,44 @@
+---
+config:
+  theme: base
+  themeVariables:
+    primaryColor: "#0f172a"
+    primaryTextColor: "#e2e8f0"
+    primaryBorderColor: "#0063e5"
+    lineColor: "#38bdf8"
+    secondaryColor: "#1e293b"
+    tertiaryColor: "#1e293b"
+    clusterBkg: "#f0f7ff"
+    clusterBorder: "#bfdbfe"
+    edgeLabelBackground: "#e8f0ff"
+    mainBkg: "#0f172a"
+    nodeBorder: "#0063e5"
+    titleColor: "#1e1b4b"
+    fontFamily: "ui-sans-serif, system-ui, -apple-system, sans-serif"
+    fontSize: "13px"
+---
+flowchart TB
+    User([User]) --> HTML["index.html<br/>App shell + meta opt-ins"]
+
+    subgraph Site["Site layer (this page only)"]
+        HTML --> app["app.js<br/>Entry point"]
+        app --> content["content.js<br/>Copy + survey data"]
+        app --> render["render.js<br/>Builds every section"]
+        app --> events["events.js<br/>Demo wiring"]
+        app --> tips["tips.js<br/>Rotating tips"]
+    end
+
+    subgraph Kit["js/neokeys/ — lifts into packages/neorgon-ui/keys/"]
+        app --> index["index.js<br/>Assembly + window.NeoKeys"]
+        index --> core["core.js<br/>Registry, typing guard, dispatch"]
+        index --> overlay["overlay.js<br/>? sheet + remap panel"]
+        index --> chrome["chrome.js<br/>H toggle"]
+        index --> fleet["fleet.js<br/>G switcher"]
+        index --> store["store.js<br/>M joke"]
+    end
+
+    events -->|"register()"| core
+    core -->|"verdict"| events
+    core <-->|"neokeys-prefs"| LS[("localStorage<br/>remaps + disabled")]
+    chrome <-->|"neo_chrome"| CK[("cookie<br/>.neorgon.com")]
+    fleet -->|"fetch"| Data[("data/fleet.json<br/>51 live sites")]
