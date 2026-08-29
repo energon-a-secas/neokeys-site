@@ -1,4 +1,4 @@
-# NeoKeys — product one-pager
+# NeoKeys: product one-pager
 
 **What it is:** Register keyboard shortcuts once, get a help overlay free
 
