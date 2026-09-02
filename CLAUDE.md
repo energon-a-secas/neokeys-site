@@ -51,9 +51,15 @@ Vendored from `packages/neorgon-ui/`: never edit in place, run the sync script i
 - Reserved keys are refused out loud rather than silently ignored, and single-key
   bindings meet WCAG 2.1.4 through the remap/disable panel. Removing that panel
   makes the single-key bindings an accessibility failure.
-- **`js/neokeys/` imports nothing from the site.** That constraint is the whole
-  point: it is what lets the directory become a kit under `packages/neorgon-ui/`
-  by copying one directory. A single import from `../state.js` destroys that.
+- **`js/neokeys/` IS the kit now, vendored.** The lift happened 2026-09-01:
+  canonical source is `packages/neorgon-ui/keys/`, this directory is the
+  vendored copy refreshed by `packages/neorgon-ui/sync-keys.sh`, and smoke
+  check 10 fails on drift. Never edit it here; edit the package and re-sync.
+  The no-site-imports constraint that made the lift possible now lives in the
+  package.
+- `css/neorgon-keys.css` is the kit stylesheet (the old `js/neokeys/keys.css`
+  path is gone). This site declares chrome scope `full`, so H hides header
+  AND footer, its pre-kit behaviour; the kit default elsewhere is header-only.
 
 ## Do not touch
 

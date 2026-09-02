@@ -14,7 +14,7 @@ const HERO_KEYS = [
   { key: 'M', label: 'Store', action: 'store' },
 ];
 
-const kit = init({ onKey: onKeyVerdict });
+const kit = init({ onKey: onKeyVerdict, fleetSource: 'data/fleet.json' });
 
 renderHeroKeys($('heroKeys'), HERO_KEYS);
 renderMechanics($('mechGrid'));

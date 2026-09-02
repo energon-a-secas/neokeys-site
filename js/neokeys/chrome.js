@@ -8,12 +8,17 @@
 
 const COOKIE = 'neo_chrome';
 
-/* Inline styles rather than a class, for two reasons that both bite:
-   the fleet forbids site-local header CSS, and the kit's own .header-hidden
-   class belongs to the app-mode scroll handler, which puts the bar back on
-   the next scroll up. An inline display beats the stylesheet and touches
-   none of the kit's rules. */
-const TARGETS = ['.header-bar', '.neo-footer'];
+/* The hiding itself lives in keys.css, keyed on html[data-chrome="off"].
+   Earlier versions set inline display because the kit's .header-hidden class
+   belongs to the app-mode scroll handler, which puts the bar back on the
+   next scroll up. A kit-owned attribute that handler never touches has the
+   same immunity without the inline style, and it lets a pre-paint guard in
+   <head> apply the stored state before the bar ever flashes:
+
+     <script>try{if(/(?:^|;\s*)neo_chrome=off/.test(document.cookie))
+       document.documentElement.dataset.chrome='off'}catch(e){}</script>
+
+   Docked-rail sites key their companion rules off the same attribute. */
 
 let toastEl = null;
 
@@ -34,15 +39,27 @@ function writeCookie(value) {
 }
 
 export function isHidden() {
-  return document.body.dataset.chrome === 'off';
+  return document.documentElement.dataset.chrome === 'off';
+}
+
+/* Header-only by default: on a content site the footer carries the licence
+   and source links, which must survive the toggle (#41). Canvas sites that
+   want the full 105px opt into scope "full", which also hides the footer.
+   Site config, not a preference, so it is set every load and never stored. */
+export function setScope(full) {
+  if (full) document.documentElement.dataset.chromeScope = 'full';
+  else delete document.documentElement.dataset.chromeScope;
+}
+
+export function isFull() {
+  return document.documentElement.dataset.chromeScope === 'full';
 }
 
 function paint(on) {
-  for (const sel of TARGETS) {
-    const el = document.querySelector(sel);
-    if (el) el.style.display = on ? '' : 'none';
-  }
-  document.body.dataset.chrome = on ? 'on' : 'off';
+  document.documentElement.dataset.chrome = on ? 'on' : 'off';
+  /* Canvas and panel sites re-measure on this rather than polling: the bar
+     appearing or leaving changes the stage height. */
+  document.dispatchEvent(new CustomEvent('neo-chrome', { detail: { hidden: !on } }));
 }
 
 function toast(message) {
@@ -65,6 +82,10 @@ export function show() {
 }
 
 export function hide() {
+  /* A dropdown or auth panel open inside the bar would vanish with it and
+     come back later in a stale half-open state; close anything expanded
+     first, through its own toggle so listeners stay consistent. */
+  document.querySelectorAll('.header-bar [aria-expanded="true"]').forEach((b) => b.click());
   paint(false);
   writeCookie('off');
   /* Hiding the bar removes the only visible control that brings it back, so

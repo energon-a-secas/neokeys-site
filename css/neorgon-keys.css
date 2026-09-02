@@ -220,3 +220,16 @@
 @media (prefers-reduced-motion: reduce) {
   .nk-toast { transition: none; }
 }
+
+/* ── Chrome toggle ─────────────────────────────────────────── */
+/* The H toggle's whole visual effect. html[data-chrome] is kit-owned state:
+   chrome.js writes it at runtime and the pre-paint guard in <head> writes it
+   before first paint, so a returning hidden-chrome visitor never sees the bar
+   flash. Never hide via the kit's .header-hidden class; the app-mode scroll
+   handler owns it and puts the bar back on the next scroll up. A site with a
+   docked rail adds its own companion rule beside the rail's normal offset,
+   e.g. html[data-chrome="off"] .nav-rail { top: 0; }.
+   Header-only by default; the footer (licence and source links) goes too
+   only under the site-declared "full" scope (#41). */
+html[data-chrome="off"] .header-bar { display: none; }
+html[data-chrome="off"][data-chrome-scope="full"] .neo-footer { display: none; }

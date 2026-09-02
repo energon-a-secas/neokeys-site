@@ -20,9 +20,10 @@ let started = false;
 
 /**
  * @param {object}  [opts]
- * @param {boolean} [opts.chromeToggle]  bind H (default: the meta tag decides)
- * @param {boolean} [opts.fleetSwitcher] bind G (default: true)
- * @param {string}  [opts.fleetSource]   URL of the site list for G
+ * @param {boolean|'full'} [opts.chromeToggle]  bind H (default: the meta tag
+ *   decides; 'full', or meta content "full", also hides the footer)
+ * @param {boolean} [opts.fleetSwitcher] bind G (default: only when a source is given)
+ * @param {string}  [opts.fleetSource]   URL of the site list for G (or meta neo-fleet-source)
  * @param {string}  [opts.typingSelector] extra selector treated as a text surface
  * @param {Function}[opts.onKey]         called with every dispatch verdict
  */
@@ -31,9 +32,16 @@ export function init(opts = {}) {
   started = true;
 
   const meta = (name) => document.querySelector(`meta[name="${name}"]`)?.content;
-  const wantChrome = opts.chromeToggle ?? meta('neo-chrome-toggle') === 'on';
-  const wantFleet = opts.fleetSwitcher ?? true;
+  const chromeMeta = meta('neo-chrome-toggle');
+  const wantChrome = opts.chromeToggle ?? (chromeMeta === 'on' || chromeMeta === 'full');
+  const chromeFull = opts.chromeToggle === 'full' || (opts.chromeToggle == null && chromeMeta === 'full');
+  /* G without a site list opens onto "Site list unavailable", which looks
+     broken rather than unconfigured. It stays off until a source is named,
+     in JS or in <meta name="neo-fleet-source">. */
+  const fleetMeta = meta('neo-fleet-source');
+  const wantFleet = opts.fleetSwitcher ?? !!(opts.fleetSource || fleetMeta);
   if (opts.fleetSource) fleet.setSource(opts.fleetSource);
+  else if (fleetMeta) fleet.setSource(fleetMeta);
   if (opts.typingSelector) core.setTypingSelector(opts.typingSelector);
 
   const kit = [{
@@ -46,11 +54,12 @@ export function init(opts = {}) {
   }];
 
   if (wantChrome) {
+    chrome.setScope(chromeFull);
     kit.push({
       key: 'h',
       id: 'kit:chrome',
       label: 'Hide chrome',
-      hint: 'Header and footer, about 105px back',
+      hint: chromeFull ? 'Header and footer, about 105px back' : 'The header bar, 56px back',
       group: 'Fleet',
       run: () => chrome.toggle(),
     });
