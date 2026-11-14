@@ -19,6 +19,10 @@ export function onKeyVerdict(verdict, e) {
 export function initMonitor() {
   monitor = { keyEl: $('monKey'), badgeEl: $('monBadge'), whyEl: $('monWhy') };
   renderVerdict(monitor, null, null);
+  /* The editable probe's sample line says Click and press; a touch screen
+     taps it and types on the keyboard that opens, like the idle line. */
+  const probe = $('guardProbeCE');
+  if (probe && window.matchMedia?.('(pointer: coarse)').matches) probe.textContent = 'Tap here and type H.';
 }
 
 /* ── Buttons that trigger the kit ─────────────────────────────
