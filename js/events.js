@@ -84,7 +84,11 @@ export function bindCollisionLab(kit) {
       return;
     }
     state.labEntries.push(accepted[0].id);
-    logCollision(log, { ok: true, key, label });
+    /* A convention is accepted, and the kit only warns in the console, so the
+       log says it where the visitor is looking: only a person can judge
+       whether this E really means export. */
+    const meaning = kit.CONVENTIONAL?.[key.toLowerCase()];
+    logCollision(log, { ok: true, key, label, convention: meaning || '' });
     $('collideKey').value = '';
     $('collideLabel').value = '';
   });

@@ -22,7 +22,7 @@ const TIPS = [
   'Alt and Ctrl are yours. The kit has never claimed a modified key and never will.',
   'Screen readers use H for headings, so keep a button too. Accessibility is not a shortcut.',
   'If a shortcut fires while you are typing, that is a bug. It has not happened yet. Please do not read that as a challenge.',
-  'This tip was selected at random from a list of 16. So was the last one. Statistically, one of them repeated.',
+  'This tip was selected at random from a list of {count}. So was the last one. Statistically, one of them repeated.',
   'You have been playing for 0 hours. Consider taking a break.',
 ];
 
@@ -45,7 +45,8 @@ export function initTips(host) {
   const paint = () => {
     label.classList.remove('is-in');
     setTimeout(() => {
-      label.textContent = TIPS[i];
+      /* The one tip that counts the list reads the list, so adding a tip keeps it true. */
+      label.textContent = TIPS[i].replace('{count}', String(TIPS.length));
       label.classList.add('is-in');
     }, 180);
   };

@@ -133,7 +133,10 @@ const VERDICT_COPY = {
   composing: () => 'An input method editor is composing. Every keystroke belongs to the candidate window until it commits.',
   modifier: () => 'A modifier was held. NeoKeys never claims modified combinations.',
   'shortcuts-off': () => 'Single-key shortcuts are switched off in the sheet. Turn them back on with the toggle there.',
-  idle: () => 'Press a key anywhere on the page.',
+  /* A touch screen has no key to press until a field brings up the keyboard. */
+  idle: () => (window.matchMedia?.('(pointer: coarse)').matches
+    ? 'Type in a field to watch the guard hold.'
+    : 'Press a key anywhere on the page.'),
 };
 
 export function renderVerdict({ keyEl, badgeEl, whyEl }, verdict, rawKey) {
@@ -145,11 +148,13 @@ export function renderVerdict({ keyEl, badgeEl, whyEl }, verdict, rawKey) {
 }
 
 /* ── Collision log ──────────────────────────────────────────── */
-export function logCollision(host, { ok, key, label, reason }) {
-  const li = el('li', `nk-lab__entry is-${ok ? 'ok' : 'no'}`);
+export function logCollision(host, { ok, key, label, reason, convention }) {
+  const li = el('li', `nk-lab__entry is-${ok ? (convention ? 'warn' : 'ok') : 'no'}`);
   const k = el('kbd', 'nk-key', key || '?');
   const text = el('span', null,
-    ok ? `Registered as "${label}". Open the sheet and it is listed.` : reason);
+    !ok ? reason
+      : convention ? `Registered as "${label}", with a warning: across the fleet this key means "${convention}". Make sure it does that here.`
+      : `Registered as "${label}". Open the sheet and it is listed.`);
   li.append(k, text);
   host.prepend(li);
   while (host.children.length > 6) host.lastChild.remove();
