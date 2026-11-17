@@ -49,7 +49,7 @@ by clicking into a text field and pressing one.
 - **Collision detection** -- reserved keys are refused with a reason, taken keys are refused, fleet conventions warn
 - **The typing guard** -- shortcuts never fire in an input, textarea, select, or contenteditable
 - **`H` chrome toggle** -- hides the header and footer and returns about 105px, opt-in per site
-- **`G` fleet switcher** -- fuzzy jump across all 51 live Neorgon sites, read from the shared registry
+- **`G` fleet switcher** -- fuzzy jump across the listed Neorgon tools, grouped by category, from `js/neokeys/fleet-data.js` (generated from the registry)
 - **Remap and disable** -- rebind any key or switch single-key shortcuts off entirely, stored per site
 - **`M` storefront** -- a joke about microtransactions, behind its own meta tag so it only appears where it lands
 
@@ -157,8 +157,6 @@ neokeys-site/
 ├── index.html              # Page shell, meta opt-ins, section scaffolding
 ├── css/
 │   └── style.css           # Site styles, lime accent, page sections
-├── data/
-│   └── fleet.json          # Live site list for the G switcher (trimmed registry)
 ├── js/
 │   ├── app.js              # Entry point, under 30 lines
 │   ├── content.js          # Page copy and the survey data, as data
@@ -173,6 +171,7 @@ neokeys-site/
 │       ├── overlay.js      # The ? sheet and the remap panel
 │       ├── chrome.js       # The H toggle and its cookie
 │       ├── fleet.js        # The G switcher
+│       ├── fleet-data.js   # Its tool list, generated from the registry
 │       ├── store.js        # The M joke
 │       └── keys.css        # Kit styles, travels with the module
 ├── tools/

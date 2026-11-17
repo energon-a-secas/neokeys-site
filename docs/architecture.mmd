@@ -41,4 +41,4 @@ flowchart TB
     core -->|"verdict"| events
     core <-->|"neokeys-prefs"| LS[("localStorage<br/>remaps + disabled")]
     chrome <-->|"neo_chrome"| CK[("cookie<br/>.neorgon.com")]
-    fleet -->|"fetch"| Data[("data/fleet.json<br/>51 live sites")]
+    fleet -->|"import"| Data[("fleet-data.js<br/>generated list")]
